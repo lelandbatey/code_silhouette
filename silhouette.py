@@ -10,7 +10,7 @@ class State:
 
 SOLID = '█'
 
-def silhouette(infile):
+def silhouette(infile, solid=None, start_solid=None, end_solid=None):
     '''Silhouete implements a basic state machine which produces the
     'silhouette' of files provided as input. A string like the following:
         a
@@ -29,6 +29,12 @@ def silhouette(infile):
           ██
         ██
         '''
+    if solid == None:
+        solid = SOLID
+    if start_solid == None:
+        start_solid = ''
+    if end_solid == None:
+        end_solid = ''
     state = State.awaitNonspace
     while True:
         c = infile.read(1)
@@ -37,15 +43,15 @@ def silhouette(infile):
         if state == State.awaitNonspace:
             if not c.isspace():
                 state = State.awaitNewline
-                yield SOLID
+                yield start_solid+solid
             else:
-                yield c
+                yield c.replace("\t", "    ")
         elif state == State.awaitNewline:
             if c == '\n':
                 state = State.awaitNonspace
-                yield c
+                yield end_solid+c
             else:
-                yield SOLID
+                yield solid
 
 def main():
     if not os.isatty(sys.stdin.fileno()):
@@ -64,4 +70,5 @@ Usage: {name} [files]
 Prints the "silhouette" of files listed in args or data from stdin.'''
         print(usage.format(name=sys.argv[0]))
 
-main()
+if __name__ == '__main__':
+    main()
