@@ -71,10 +71,14 @@ filter: blur(0px);
 '''
 PAGE = """<!DOCTYPE html>
 <html>
+<title>Silhouette of Code</title>
 <style type="text/css">
 {}
 </style>
 <body>
+<p>
+This is a visualization of the format and structure of code in various programming languages, meant to capture in the roughest way what each programming language "looks like". The code samples where chosen by finding popular repos for each language and using the longest file in each repository.
+</p>
 <button onclick="toggleBlur();">Toggle blur</button>
 <a href="https://github.com/lelandbatey/code_silhouette">Source for generating this document.</a>
 <div class='copy'>
