@@ -76,7 +76,7 @@ PAGE = """<!DOCTYPE html>
 </style>
 <body>
 <button onclick="toggleBlur();">Toggle blur</button>
-<a href="https://gist.github.com/hasLeland/30dc082ea78d1dbc8e7ce42599095b23">Source for generating this document.</a>
+<a href="https://github.com/lelandbatey/code_silhouette">Source for generating this document.</a>
 <div class='copy'>
 {}
 </div>
